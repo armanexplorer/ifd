@@ -9,3 +9,14 @@ if (File.isDirectory(autoRunDirectory)) {
     }
 }
 
+// run scripts provided in scripts/AutoRun/, after runnng plugin scripts
+autoRunDirectory = getDirectory("imagej") + "/scripts/AutoRun/";
+if (File.isDirectory(autoRunDirectory)) {
+    list = getFileList(autoRunDirectory);
+    // make sure startup order is consistent
+    Array.sort(list);
+    for (i = 0; i < list.length; i++) {
+        runMacro(autoRunDirectory + list[i]);
+    }
+}
+
