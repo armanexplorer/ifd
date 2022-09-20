@@ -1,0 +1,11 @@
+macro "Calculate Ratio [q]" {
+	total = getResult("Area", 0);
+	intended = getResult("Area", 1);
+	print(intended/total*100 , " %");
+}
+
+macro "Calculate Ratio Action Tool - C0a0T0c15cT6c15aTec15l" {
+	total = getResult("Area", 0);
+	intended = getResult("Area", 1);
+	print(intended/total*100 , " %");
+}

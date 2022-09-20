@@ -1,0 +1,158 @@
+// Action Bar description file :first_action_bar
+run("Action Bar","/plugins/ActionBar/Isfahan Faculty of Dentistry.txt");
+exit;
+
+// <sticky>
+<onTop>
+<DnD>
+<main>
+// <hideMenus>
+
+// you could put some title above the actoin bar by uncommenting the following line
+// <text><html><h1><font color="red">This is some good text</font></h1></html>
+
+<line>
+
+<button>
+label=Open
+icon=../../../images/action-bar/open-image.png
+arg=<macro>
+run("Open...")
+</macro>
+
+</line>
+<line>
+
+<button>
+label=Measure
+icon=../../../images/action-bar/rows.png
+arg=<macro>
+
+// Check the user has selected some area to be captured
+if (is("area") == 0)
+    showMessageWithCancel("You haven't selected any area.\n\nClick on `OK`, the whole area of image will be taken into account");
+
+// Add the area (default) measurement row to the ``Results`` table
+run("Measure");
+
+// Select ``Results`` window to show the recorded row to the user
+selectWindow("Results");
+
+</macro>
+
+<button>
+label=Threshold
+icon=../../../images/action-bar/threshold.png
+arg=<macro>
+run("Color Threshold...")
+</macro>
+
+<button>
+label=Area Ratio
+icon=../../../images/action-bar/ratio.png
+arg=<macro>
+run("Calculate Ratio");
+</macro>
+
+//<separator>
+</line>
+
+//<text><html>Area Selection</html>
+<line>
+
+<button>
+label=rectangle
+icon=../../../images/action-bar/rectangle-ss.png
+arg=<macro>
+setTool("rectangle");
+// selectImage(getImageID());
+</macro>
+
+<button>
+label=oval
+icon=../../../images/action-bar/oval-ss.png
+arg=<macro>
+setTool("oval");
+// selectImage(getImageID());
+</macro>
+
+</line>
+<line>
+
+<button>
+label=polygon
+icon=../../../images/action-bar/polygon-ss.png
+arg=<macro>
+setTool("polygon");
+// selectImage(getImageID());
+</macro>
+
+<button>
+label=freehand
+icon=../../../images/action-bar/freehand.png
+arg=<macro>
+setTool("freehand");
+// selectImage(getImageID());
+</macro>
+
+</line>
+<line>
+
+<button>
+label=dropper
+icon=../../../images/action-bar/dropper.png
+arg=<macro>
+setTool("dropper");
+</macro>
+
+<button>
+label=brush
+icon=../../../images/action-bar/brush.png
+arg=<macro>
+setTool("Paintbrush Tool");
+</macro>
+
+<button>
+label=brush size
+icon=../../../images/action-bar/brush-size.png
+arg=<macro>
+run("Paintbrush Tool Options...");
+</macro>
+
+</line>
+<line>
+
+<button>
+label=fill
+icon=../../../images/action-bar/fill.png
+arg=<macro>
+run("Flood Fill Tool");
+</macro>
+
+<button>
+label=color-picker
+icon=../../../images/action-bar/color-picker.png
+arg=<macro>
+run("Color Picker...");
+</macro>
+
+<button>
+label=crop
+icon=../../../images/action-bar/crop.png
+arg=<macro>
+run("Crop");
+</macro>
+
+</line>
+// <line>
+
+// <button>
+// label=close
+// icon=../../../images/action-bar/close.png
+// arg=<close>
+// arg=<macro>
+// close("*");
+// <close>
+// </macro>
+
+// </line>

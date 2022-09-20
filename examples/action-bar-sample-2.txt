@@ -1,0 +1,76 @@
+// Action Bar description file :first_action_bar
+run("Action Bar","/plugins/ActionBar/Isfahan Faculty of Dentistry.txt");
+exit;
+
+<onTop>
+<DnD>
+<main>
+
+<line>
+
+<button>
+label=rectangle
+icon=Isfahan Faculty of Dentistry/rectangle-small.png
+arg=<tool>
+setTool("rectangle")
+</tool>
+
+<button>
+label=oval
+icon=Isfahan Faculty of Dentistry/oval-small.png
+arg=<tool>
+setTool("oval")
+</tool>
+
+<button>
+label=polygon
+icon=Isfahan Faculty of Dentistry/polygon-small.png
+arg=<tool>
+setTool("polygon")
+</tool>
+
+<button>
+label=freehand
+icon=Isfahan Faculty of Dentistry/freehand-small.png
+arg=<tool>
+setTool("freehand")
+</tool>
+
+</line>
+
+<line>
+
+<button>
+label=Open
+icon=Isfahan Faculty of Dentistry/image-small.png
+arg=<macro>
+run("Open...")
+</macro>
+
+<button>
+label=Threshold
+icon=Isfahan Faculty of Dentistry/adjust-small.png
+arg=<macro>
+run("Color Threshold...")
+</macro>
+
+<button>
+label=Measure
+icon=Isfahan Faculty of Dentistry/sampling-small.png
+arg=<macro>
+run("Measure");
+</macro>
+
+<button>
+label=Area Ratio
+icon=Isfahan Faculty of Dentistry/ratio-small.png
+arg=<macro>
+run("Calculate Ratio [q]")
+</macro>
+</line>
+
+//<button>
+//label=hide main window
+//arg=<hide>
+//</line>
+// end of file

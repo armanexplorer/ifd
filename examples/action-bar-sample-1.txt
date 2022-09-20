@@ -1,0 +1,131 @@
+// Action Bar description file :first_action_bar
+run("Action Bar","/plugins/ActionBar/first_action_bar.txt");
+exit;
+
+<DnD>
+<main>
+<line>
+<button>
+label=Freehand
+arg=<tool>
+setTool("freehand")
+</tool>
+
+<button>
+label=Measure
+icon=first_action_bar/image1_1.png
+arg=<macro>
+run("Measure");
+</macro>
+
+<button>
+label=hide main window
+icon=first_action_bar/image1_1.png
+arg=<hide>
+
+<button>
+label=my_button
+icon=first_action_bar/image1_1.png
+arg=<macro>
+run("Calculate Ratio")
+</macro>
+<button> 1 line 1
+label=button_1_1
+icon=first_action_bar/image1_1.png
+arg=<macro>
+showMessage("You pressed button 1 line 1");
+</macro>
+<button> 2 line 1
+label=button_2_1
+icon=first_action_bar/image2_1.png
+arg=<macro>
+showMessage("You pressed button 2 line 1");
+</macro>
+<button> 3 line 1
+label=button_3_1
+icon=first_action_bar/image3_1.png
+arg=<macro>
+showMessage("You pressed button 3 line 1");
+</macro>
+<button> 4 line 1
+label=button_4_1
+icon=first_action_bar/image4_1.png
+arg=<macro>
+showMessage("You pressed button 4 line 1");
+</macro>
+<button> 5 line 1
+label=button_5_1
+icon=first_action_bar/image5_1.png
+arg=<macro>
+showMessage("You pressed button 5 line 1");
+</macro>
+<button> 6 line 1
+label=button_6_1
+icon=first_action_bar/image6_1.png
+arg=<macro>
+showMessage("You pressed button 6 line 1");
+</macro>
+<button> 7 line 1
+label=button_7_1
+icon=first_action_bar/image7_1.png
+arg=<macro>
+showMessage("You pressed button 7 line 1");
+</macro>
+<button> 8 line 1
+label=button_8_1
+icon=first_action_bar/image8_1.png
+arg=<macro>
+showMessage("You pressed button 8 line 1");
+</macro>
+</line>
+<line>
+<button> 1 line 2
+label=button_1_2
+icon=first_action_bar/image1_2.png
+arg=<macro>
+showMessage("You pressed button 1 line 2");
+</macro>
+<button> 2 line 2
+label=button_2_2
+icon=first_action_bar/image2_2.png
+arg=<macro>
+showMessage("You pressed button 2 line 2");
+</macro>
+<button> 3 line 2
+label=button_3_2
+icon=first_action_bar/image3_2.png
+arg=<macro>
+showMessage("You pressed button 3 line 2");
+</macro>
+<button> 4 line 2
+label=button_4_2
+icon=first_action_bar/image4_2.png
+arg=<macro>
+showMessage("You pressed button 4 line 2");
+</macro>
+<button> 5 line 2
+label=button_5_2
+icon=first_action_bar/image5_2.png
+arg=<macro>
+showMessage("You pressed button 5 line 2");
+</macro>
+<button> 6 line 2
+label=button_6_2
+icon=first_action_bar/image6_2.png
+arg=<macro>
+showMessage("You pressed button 6 line 2");
+</macro>
+<button> 7 line 2
+label=button_7_2
+icon=first_action_bar/image7_2.png
+arg=<macro>
+showMessage("You pressed button 7 line 2");
+</macro>
+<button> 8 line 2
+label=button_8_2
+icon=first_action_bar/image8_2.png
+arg=<macro>
+showMessage("You pressed button 8 line 2");
+</macro>
+</line>
+// end of file
