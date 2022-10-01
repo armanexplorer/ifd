@@ -3,3 +3,6 @@ jars
 lib
 plugins
 .jython_cache
+
+# tutorials
+*.webm

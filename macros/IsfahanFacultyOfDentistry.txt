@@ -1,5 +1,5 @@
 // Action Bar description file :first_action_bar
-run("Action Bar","/plugins/ActionBar/Isfahan Faculty of Dentistry.txt");
+run("Action Bar","/macros/IsfahanFacultyOfDentistry.txt);
 exit;
 
 // <sticky>
@@ -8,7 +8,7 @@ exit;
 <main>
 // <hideMenus>
 
-// you could put some title above the actoin bar by uncommenting the following line
+// you could put some title at the top of the actoin bar by uncommenting the following line
 // <text><html><h1><font color="red">This is some good text</font></h1></html>
 
 <line>
@@ -126,7 +126,8 @@ run("Paintbrush Tool Options...");
 label=fill
 icon=../../../images/action-bar/fill.png
 arg=<macro>
-run("Flood Fill Tool");
+setTool("Flood Fill Tool");
+// run("Flood Fill Tool");
 </macro>
 
 <button>

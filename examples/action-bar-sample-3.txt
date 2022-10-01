@@ -1,0 +1,190 @@
+// Action Bar description file :Overlay Properties....
+run("Action Bar","/plugins/ActionBar/Overlay_Styles.ijm");
+exit();
+
+<startupAction>
+if (IJ.getFullVersion<"1.53c26") requires("1.53c26");
+</startupAction>
+
+<text>_Color (shift for fill)
+<line>
+<button>
+bgcolor=#000000
+label=blk
+arg=color("#000000");
+<button>
+bgcolor=#FFFFFF
+arg=color("#FFFFFF");
+<button>
+bgcolor=#FF0000
+arg=color("#FF0000");
+<button>
+bgcolor=#00FF00
+arg=color("#00FF00");
+<button>
+bgcolor=#0000FF
+arg=color("#0000FF");
+<button>
+bgcolor=#FFFF00
+arg=color("#FFFF00");
+<button>
+bgcolor=#FF00FF
+arg=color("#FF00FF");
+<button>
+bgcolor=#00FFFF
+arg=color("#00FFFF");
+<button>
+label=fg
+arg=color("fg");
+<button>
+label=bg
+arg=color("bg");
+</line>
+
+<text>_Transparency and Stroke Width
+<line>
+<button>
+label=10
+arg=transparency("19");
+<button>
+label=20
+arg=transparency("32");
+<button>
+label=50
+arg=transparency("80");
+<button>
+label=80
+arg=transparency("cd");
+<separator>
+<button>
+label=1px
+arg=strokeWidth(1);
+<button>
+label=2px
+arg=strokeWidth(2);
+<button>
+label=5px
+arg=strokeWidth(5);
+<button>
+label=0px
+arg=strokeWidth(0);
+<button>
+label=set
+arg=<macro>
+stroke=getNumber("Stroke Weight (px)",1);
+strokeWidth(stroke);
+</macro>
+</line>
+
+<codeLibrary>
+var colNames = newArray("red","green","blue","magenta","cyan","yellow","orange","black","white","gray","lightgray","darkgray","pink");
+var colValues = newArray("ff0000","00ff00","0000ff","ff00ff","00ffff","ffff00","ffc800","000000","ffffff","808080","lightgray","darkgray","pink");
+
+function transparency(c) {
+Overlay.removeRois( 'ToolSelectedOverlayElement' ); 
+s = getSelectedElements( ); 
+s = split( s, ',' ); 
+if( s.length < 1 ) exit( ); 
+for (i=0;i<s.length;i++) {
+Overlay.activateSelectionAndWait(s[s.length-i-1]);
+strcol = Roi.getFillColor();
+mode = "fill";
+if (strcol=="none") {
+mode = "stroke";
+strcol = Roi.getStrokeColor();
+}
+List.fromArrays(colNames, colValues);
+if (List.get(strcol)!="") {
+col = "#"+c+List.get(strcol);
+} else {
+col = "#"+c+substring(strcol,1);
+}
+if( mode == "stroke") Roi.setStrokeColor(col);
+else Roi.setFillColor(col);
+}
+highlightSelectedROIs();
+run("Select None");
+}
+
+
+function strokeWidth(c) {
+shift=false;
+if (isKeyDown('shift')) shift=true;
+Overlay.removeRois( 'ToolSelectedOverlayElement' ); 
+s = getSelectedElements( ); 
+s = split( s, ',' ); 
+if( s.length < 1 ) exit( ); 
+for (i=0;i<s.length;i++) {
+Overlay.activateSelectionAndWait(s[s.length-i-1]);
+Roi.setFillColor("");
+Roi.setStrokeWidth(c);
+}
+highlightSelectedROIs();
+run("Select None");
+}
+
+
+function color(c) {
+if (c=="fg") c="#"+toUpperCase(IJ.pad(toHex(0xFFFFFF&getValue("rgb.foreground")),6));
+if (c=="bg") c="#"+toUpperCase(IJ.pad(toHex(0xFFFFFF&getValue("rgb.background")),6));
+shift=false;
+if (isKeyDown('shift')) shift=true;
+Overlay.removeRois( 'ToolSelectedOverlayElement' ); 
+s = getSelectedElements( ); 
+s = split( s, ',' ); 
+if( s.length < 1 ) exit( ); 
+for (i=0;i<s.length;i++) {
+Overlay.activateSelectionAndWait(s[s.length-i-1]);
+if (shift) {
+Roi.setFillColor(c);
+}
+else {
+Roi.setFillColor("");
+Roi.setStrokeColor(c);
+}
+}
+highlightSelectedROIs();
+run("Select None");
+}
+
+function selectElement( id, add ) { 
+  if( add == true ) { 
+    selected = getSelectedElements( ); 
+    s = split( selected, ',' ); 
+    isSelected = false; 
+    for( i = 0; i < s.length; i ++ ) { 
+      if( 1 * s [ i ]== id ) isSelected = true; 
+    } 
+    if( ! isSelected ) { 
+      call( 'ij.Prefs.set', 'overlaytoolset.selected', selected + ',' + id  ); 
+      selected = getSelectedElements( ); 
+    } else { 
+      unselectElement( id ); 
+    } 
+  } else { 
+    call( 'ij.Prefs.set', 'overlaytoolset.selected',  id  ); 
+  } 
+} 
+
+function highlightSelectedROIs( ) { 
+  Overlay.removeRois( 'ToolSelectedOverlayElement' ); 
+  selected = getSelectedElements( ); 
+  s = split( selected, ',' ); 
+  //print( selected ); 
+  for( i = 0; i < s.length; i ++ ) { 
+    id = s [ i ]; 
+    Overlay.getBounds( id, bx, by, bw, bh ); 
+    makeRectangle( bx, by, bw, bh ); 
+    Roi.setName( 'ToolSelectedOverlayElement' ); 
+    Overlay.addSelection( '#90ff0000', 3 ); 
+  } 
+  run( "Select None" ); 
+  Overlay.show; 
+} 
+function getSelectedElements( ) { 
+  selected = call( 'ij.Prefs.get', 'overlaytoolset.selected', '' ); 
+  while( selected.endsWith( "," ) ) selected = substring( selected, 0, lengthOf( selected )- 1 ); 
+  while( selected.startsWith( "," ) ) selected = substring( selected, 1, lengthOf( selected ) ); 
+  return selected; 
+} 
+</codeLibrary>
